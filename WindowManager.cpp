@@ -152,25 +152,25 @@ void WindowManager::handleMessages(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 		break;
 	case WM_RBUTTONDOWN:
 	case WM_LBUTTONDOWN:
-		//mousePos.x = (float)LOWORD(lParam);
-		//mousePos.y = (float)HIWORD(lParam);
+		mousePos.x = (float)LOWORD(lParam);
+		mousePos.y = (float)HIWORD(lParam);
 		break;
 	case WM_MOUSEMOVE:
 		if (wParam & MK_RBUTTON)
 		{
 			int32_t posx = LOWORD(lParam);
 			int32_t posy = HIWORD(lParam);
-			//zoom += (mousePos.y - (float)posy) * .005f * zoomSpeed;
-			//mousePos = glm::vec2((float)posx, (float)posy);
+			zoom += (mousePos.y - (float)posy) * .005f * zoomSpeed;
+			mousePos = glm::vec2((float)posx, (float)posy);
 			//viewChanged();
 		}
 		if (wParam & MK_LBUTTON)
 		{
 			int32_t posx = LOWORD(lParam);
 			int32_t posy = HIWORD(lParam);
-			//rotation.x += (mousePos.y - (float)posy) * 1.25f * rotationSpeed;
-			//rotation.y -= (mousePos.x - (float)posx) * 1.25f * rotationSpeed;
-			//mousePos = glm::vec2((float)posx, (float)posy);
+			rotation.x += (mousePos.y - (float)posy) * 1.25f * rotationSpeed;
+			rotation.y -= (mousePos.x - (float)posx) * 1.25f * rotationSpeed;
+			mousePos = glm::vec2((float)posx, (float)posy);
 			//viewChanged();
 		}
 		break;

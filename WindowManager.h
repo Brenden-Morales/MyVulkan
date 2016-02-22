@@ -1,6 +1,9 @@
 #pragma once
 #include <windows.h>
 #include <iostream>
+#define GLM_FORCE_RADIANS
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 
 class WindowManager {
@@ -14,6 +17,10 @@ private :
 	bool prepared = false;
 	bool paused = false;
 	float zoom = 0;
+	float zoomSpeed = 1.0f;
+	float rotationSpeed = 1.0f;
+	glm::vec3 rotation = glm::vec3();
+	glm::vec2 mousePos;
 
 public:
 	HWND setupWindow(HINSTANCE hinstance, WNDPROC wndproc);
